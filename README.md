@@ -4,7 +4,7 @@ A lightweight Python tool for simulating and visualizing biosignals with noise f
 
 ---
 
-## What it does
+## What It Does
 
 Generates a synthetic EEG-style signal (sine wave), corrupts it with Gaussian noise, applies a Butterworth low-pass filter to recover the clean signal, and plots all stages alongside a frequency spectrum (FFT).
 
@@ -58,24 +58,3 @@ Edit these at the top of `biosignal_sim.py`:
 | `cutoff_hz` | 15 | Low-pass filter cutoff frequency |
 | `filter_order` | 4 | Butterworth filter sharpness |
 
----
-
-## Concepts demonstrated
-
-- **Signal generation** with `numpy.linspace` and `numpy.sin`
-- **Gaussian noise simulation** with `numpy.random.default_rng`
-- **Butterworth low-pass filtering** with `scipy.signal.butter` and `filtfilt`
-- **FFT frequency analysis** with `numpy.fft.rfft`
-- **Multi-panel visualization** with `matplotlib` and `GridSpec`
-
----
-
-## Background
-
-Biosignal processing sits at the intersection of neuroscience and data analysis. Understanding how to simulate, corrupt, and recover signals is foundational to fields like EEG research. This project serves as a hands-on sandbox for experimenting with those concepts using Python's core scientific stack, and is applicable anywhere clean signal extraction from real-world data matters.
-
----
-
-## License
-
-MIT
