@@ -16,7 +16,7 @@ from scipy import signal
 from pathlib import Path
 
 
-# 1.  Parameters
+# 1. Parameters
 duration = 4         # seconds of signal to generate
 fs = 256             # sampling rate (samples per second); typical EEG rate
 freq_hz = 8          # signal frequency in Hz (8 Hz = alpha brain wave band)
@@ -26,28 +26,28 @@ cutoff_hz = 15       # low-pass filter cutoff: keep freqs below this
 filter_order = 4     # Butterworth filter order (higher = sharper cutoff)
 
 
-# 2.  Generate clean signal
+# 2. Generate clean signal
 def generate_signal(duration, fs, freq, amplitude):
     t = np.linspace(0, duration, int(duration * fs), endpoint=False)
     clean_signal = amplitude * np.sin(2 * np.pi * freq * t)
     return t, clean_signal
 
 
-# 3.  Add noise
+# 3. Add noise
 def add_noise(clean_signal, noise_level, seed=42):
     rng = np.random.default_rng(seed)
     noise = noise_level * rng.standard_normal(len(clean_signal))
     return clean_signal + noise
 
 
-# 4.  Apply a low-pass filter
+# 4. Apply a low-pass filter
 def apply_lowpass_filter(noisy_signal, cutoff, fs, order):
     b, a = signal.butter(order, cutoff, btype='low', fs=fs)
     filtered = signal.filtfilt(b, a, noisy_signal)
     return filtered
 
 
-# Visualize results
+# 5. Visualize results
 def plot_signals(t, clean, noisy, filtered, fs, freq):
     fig = plt.figure(figsize=(12, 8), facecolor='#fafafa')
     fig.suptitle(
